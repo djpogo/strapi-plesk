@@ -1,8 +1,8 @@
 // config/database.js
 module.exports = ({ env }) => ({
-  defaultConnection: process.env.NODE_ENV,
+  defaultConnection: env('DATABASE_CONNECTION_NAME'),
   connections: {
-    development: {
+    sqlite: {
       connector: 'bookshelf',
       settings: {
         client: 'sqlite',
@@ -12,7 +12,7 @@ module.exports = ({ env }) => ({
         useNullAsDefault: true,
       },
     },
-    production: {
+    mysql: {
       connector: 'bookshelf',
       settings: {
         client: 'mysql',
